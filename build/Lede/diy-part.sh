@@ -5,8 +5,8 @@
 # 不要一下就拉取别人一个插件包N多插件的，多了没用，增加编译错误，自己需要的才好
 
 # 替换 luci 和telephony 为 18.06版本
-sed -i 's|src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05|src-git luci https://github.com/coolsnowwolf/luci|' $FEEDS_CONF
-sed -i 's|src-git telephony https://github.com/openwrt/telephony.git;openwrt-23.05|src-git telephony https://github.com/openwrt/telephony|' $FEEDS_CONF
+sed -i 's|src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05|src-git luci https://github.com/coolsnowwolf/luci|' feeds.conf.default
+sed -i 's|src-git telephony https://github.com/openwrt/telephony.git;openwrt-23.05|src-git telephony https://github.com/openwrt/telephony|' feeds.conf.default
 
 # poweroff关机功能集成到系统源码菜单中
 curl -fsSL  https://raw.githubusercontent.com/rastyu/package/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
