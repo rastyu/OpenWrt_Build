@@ -4,22 +4,6 @@
 # 自行拉取插件之前请SSH连接进入固件配置里面确认过没有你要的插件再单独拉取你需要的插件
 # 不要一下就拉取别人一个插件包N多插件的，多了没用，增加编译错误，自己需要的才好
 
-# 替换 luci 和telephony 为 18.06版本
-# feeds.conf.default 文件路径
-FEEDS_CONF="feeds.conf.default"
-
-# 检查 feeds.conf.default 文件是否存在
-if [ ! -f "$FEEDS_CONF" ]; then
-    echo "$FEEDS_CONF does not exist."
-    exit 1
-fi
-
-# 替换 luci feed
-sed -i 's|src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05|src-git luci https://github.com/coolsnowwolf/luci|' $FEEDS_CONF
-
-# 替换 telephony feed
-sed -i 's|src-git telephony https://github.com/openwrt/telephony.git;openwrt-23.05|src-git telephony https://github.com/openwrt/telephony|' $FEEDS_CONF
-
 # poweroff关机功能集成到系统源码菜单中
 curl -fsSL  https://raw.githubusercontent.com/rastyu/package/main/poweroff.htm > ./feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_system/poweroff.htm 
 curl -fsSL  https://raw.githubusercontent.com/rastyu/package/main/system.lua > ./feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
